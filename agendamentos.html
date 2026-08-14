@@ -1,0 +1,60 @@
+!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    
+    <meta charset="UTF-8">
+     <title>Cuida Mais - Agendar Consulta</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f4f8; padding: 20px; }
+        .card { max-width: 450px; background: white; padding: 25px; border-radius: 10px; margin: 0 auto; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h2 { color: #007bff; text-align: center; }
+        label { font-weight: bold; display: block; margin-top: 12px; }
+        input, select, textarea, button { width: 100%; padding: 10px; margin-top: 5px; border-radius: 5px; border: 1px solid #ccc; box-sizing: border-box; }
+        button { background-color: #28a745; color: white; border: none; font-size: 16px; margin-top: 20px; cursor: pointer; }
+        button:hover { background-color: #218838; }
+        #mensagem { margin-top: 15px; font-weight: bold; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h2> Cuida Mais</h2>
+        <h3>Agendamento de Consulta</h3>
+
+        <form id="formAgendamento">
+            <label for="usuario_id">Código do Paciente (ID):</label>
+            <input type="number" id="usuario_id" placeholder="Ex: 1" required>
+
+            <label for="especialidade">Especialidade Médica:</label>
+            <select id="especialidade" required>
+                <option value="">Selecione...</option>
+                <option value="Clinico Geral">Clínico Geral</option>
+                <option value="Pediatria">Pediatria</option>
+                <option value="Cardiologia">Cardiologia</option>
+                <option value="Ortopedia">Ortopedia</option>
+            </select>
+
+            <label for="data_consulta">Data e Horário:</label>
+            <input type="datetime-local" id="data_consulta" required>
+
+            <label for="observacoes">Sintomas ou Observações:</label>
+            <textarea id="observacoes" rows="3" placeholder="Descreva brevemente o motivo da consulta..."></textarea>
+
+            <button type="submit">Confirmar Agendamento</button>
+        </form>
+
+        <div id="mensagem"></div> 
+    </div>
+
+    <script src="agendamento.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
