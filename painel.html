@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Painel Médico - Agendamentos</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f7f6; }
+    h1 { color: #0056b3; }
+    table { width: 100%; border-collapse: collapse; background: #fff; margin-top: 20px; }
+    th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+    th { background-color: #0056b3; color: white; }
+    .status-pendente { color: #d9534f; font-weight: bold; }
+    .status-confirmada { color: #5cb85c; font-weight: bold; }
+    .btn-confirmar { background-color: #28a745; color: white; border: none; padding: 8px 12px; border-radius: 4px; cursor: pointer; }
+    .btn-confirmar:disabled { background-color: #ccc; cursor: not-allowed; }
+  </style>
+</head>
+<body>
+
+  <h1>Painel da Equipe de Saúde</h1>
+  <p>Gestão e confirmação de consultas pendentes.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Paciente</th>
+        <th>Data</th>
+        <th>Horário</th>
+        <th>Especialidade</th>
+        <th>Status</th>
+        <th>Ação</th>
+      </tr>
+    </thead>
+    <tbody id="lista-consultas">
+      <!-- Inserido dinamicamente via JS -->
+    </tbody>
+  </table>
+
+<script>
+  async function carregarConsultas() {
+    try {
+      const res = await fetch('http://127.0.0.1:3000/api/consultas');
+      const consultas = await res.json();
+
+      const tabelaBody = document.getElementById('lista-consultas');
+      tabelaBody.innerHTML = ''; 
+
+      if (consultas.length === 0) {
+        tabelaBody.innerHTML = '<tr><td colspan="5" style="text-align:center;">Nenhuma consulta agendada.</td></tr>';
+        return;
+      }
+
+      consultas.forEach(c => {
+        const dataFormatada = new Date(c.data_consulta).toLocaleString('pt-BR');
+        
+        tabelaBody.innerHTML += `
+          <tr>
+            <td>${c.id}</td>
+            <td>${c.paciente}</td>
+            <td>${dataFormatada}</td>
+            <td>${c.medico_especialidade}</td>
+            <td>${c.status}</td>
+          </tr>
+        `;
+      });
+
+    } catch (error) {
+      console.error("Erro ao carregar consultas:", error);
+    }
+  }
+
+  carregarConsultas();
+</script>
