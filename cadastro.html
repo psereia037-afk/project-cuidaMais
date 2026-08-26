@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cuida Mais - Criar Conta</title>
+  <style>
+    * {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+background-color: #f0f4f8;
+display: flex;
+justify-content: center;
+align-items: center;
+min-height: 100vh;
+padding: 20px;
+    }
+
+    .container {
+background-color: #ffffff;
+padding: 40px;
+border-radius: 12px;
+box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+width: 100%;
+max-width: 450px;
+    }
+
+    h2 {
+color: #0056b3;
+margin-bottom: 25px;
+text-align: center;
+font-size: 26px;
+    }
+
+    .form-group {
+margin-bottom: 18px;
+    }
+
+    label {
+display: block;
+margin-bottom: 8px;
+color: #333;
+font-weight: 600;
+font-size: 14px;
+    }
+
+    input, select {
+width: 100%;
+padding: 12px;
+border: 1px solid #ccc;
+border-radius: 6px;
+font-size: 15px;
+outline: none;
+transition: border-color 0.2s;
+    }
+
+    input:focus, select:focus {
+border-color: #0056b3;
+    }
+
+    button {
+width: 100%;
+background-color: #0056b3;
+color: white;
+border: none;
+padding: 14px;
+font-size: 16px;
+font-weight: bold;
+border-radius: 6px;
+cursor: pointer;
+margin-top: 10px;
+transition: background-color 0.2s;
+    }
+
+    button:hover {
+background-color: #003d80;
+    }</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Criar Conta</h2>
+    <form id="form-cadastro" action="agendamento.html">
+    
+<div class="form-group">
+        <label for="nome">Nome Completo:</label>
+        <input type="text" id="nome" placeholder="Digite seu nome" required>
+</div>
+
+<div class="form-group">
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" placeholder="seuemail@exemplo.com" required>
+</div>
+
+<div class="form-group">
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" placeholder="(00) 00000-0000">
+</div>
+
+ <div class="form-group">
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" placeholder="Digite sua senha" required>
+</div>
+
+     <div class="form-group">
+        <label for="perfil">Perfil:</label>
+        <select id="perfil">
+    <option value="paciente">Paciente</option>
+        <option value="medico">Médico / Equipe</option>
+        </select>
+    </div>
+
+    <button type="submit">Cadastrar</button>
+    </form>
+</div>
+
+<script>
+document.getElementById('form-cadastro').addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const dados = {
+nome: document.getElementById('nome').value,
+email: document.getElementById('email').value,
+telefone: document.getElementById('telefone').value,
+senha: document.getElementById('senha').value,
+perfil: document.getElementById('perfil').value
+    };
+
+    try {
+      // Usamos 127.0.0.1 em vez de localhost para evitar problemas de DNS no Windows
+const res = await fetch('http://127.0.0.1:3000/api/usuarios/cadastro', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dados)
+});
+
+const resultado = await res.json();
+
+if (res.ok) {
+        alert(`✅ Cadastro realizado com sucesso!\nID Gerado: ${resultado.id}`);
+        window.location.href = 'agendamento.html';
+} else {
+        alert(`⚠️ Erro no Banco/Servidor: ${resultado.erro || resultado.mensagem}`);
+ }
+    } catch (error) {
+ alert(`❌ Erro de Conexão: ${error.message}\nVerifique se o 'python app.py' está rodando no terminal.`);
+    }
+});
+</script>
