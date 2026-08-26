@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuida Mais - Bem-vindo</title>
+    <style>
+        /* Estilos Globais e Fundo */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #e0f7fa 0%, #b3e5fc 100%);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+
+        /* Cartão Central */
+        .welcome-container {
+            background-color: #fff;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 550px;
+            width: 90%;
+        }
+
+        /* Título e Ícone */
+        .welcome-header h1 {
+            font-size: 2.8rem;
+            color: #0277bd;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px; /* Espaço entre o ícone e o texto */
+        }
+
+        .welcome-header .icon {
+            font-size: 3.2rem;
+        }
+
+        /* Texto Motivador */
+        .welcome-text p {
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: #546e7a;
+            margin-bottom: 40px;
+        }
+
+        /* Botão Estilizado */
+        .welcome-action a {
+            text-decoration: none; /* Remove sublinhado do link */
+        }
+
+        .btn-access {
+            background-color: #0288d1;
+            color: white;
+            border: none;
+            padding: 16px 35px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 50px; /* Bordas bem arredondadas */
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(2, 136, 209, 0.3);
+        }
+
+        /* Efeito ao passar o mouse (Hover) */
+        .btn-access:hover {
+            background-color: #01579b;
+            transform: translateY(-2px); /* Levanta levemente */
+            box-shadow: 0 6px 15px rgba(2, 136, 209, 0.4);
+        }
+
+        /* Efeito ao clicar */
+        .btn-access:active {
+            transform: translateY(0);
+            box-shadow: 0 3px 8px rgba(2, 136, 209, 0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="welcome-container">
+        <header class="welcome-header">
+            <!-- Mantive o ícone e o nome igual ao seu, mas com mais estilo -->
+            <h1><span class="icon">🏥</span> Cuida Mais</h1>
+        </header>
+        
+        <main class="welcome-text">
+            <p>
+                Bem-vindo ao Cuida Mais.<br>
+                Cuidar da sua saúde nunca foi tão simples, rápido e humano. Conectamos você aos melhores profissionais em poucos cliques.
+            </p>
+        </main>
+
+        <footer class="welcome-action">
+            <!-- O link para cadastro.html continua aqui, no botão novo -->
+            <a href="cadastro.html">
+                <button class="btn-access">Acessar o Sistema</button>
+            </a>
+        </footer>
+    </div>
+
+</body>
+</html>
+
+
